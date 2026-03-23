@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "description": "Salade fraîche de tomates et mozzarella, assaisonnée au basilic.",
+    "description": "Salade fraîche de tomates et mozzarella, assaisonnée au basilic",
     "histoire": "Originaire d'Italie, cette salade Caprese est un classique des repas estivaux.",
     "preparation_time": "10 minutes",
     "cooking_time": "0 minutes",
@@ -13,11 +13,12 @@
     "cooking_method": "aucun",
     "region": "Europe",
     "flavor": "salé",
-    "difficulty": "facile"
+    "difficulty": "facile",
+    "image":"./src/assets/images/recette1.jpg"
   },
   {
     "id": 2,
-    "description": "Soupe traditionnelle à l'oignon gratinée au fromage.",
+    "description": "Soupe traditionnelle à l'oignon gratinée au fromage",
     "histoire": "Plat français classique servi souvent dans les bistrots, originaire de la région de Lyon.",
     "preparation_time": "15 minutes",
     "cooking_time": "40 minutes",
@@ -29,11 +30,12 @@
     "cooking_method": "four",
     "region": "Europe",
     "flavor": "salé",
-    "difficulty": "moyenne"
+    "difficulty": "moyenne",
+    "image":"./src/assets/images/recette2.jpg"
   },
   {
     "id": 3,
-    "description": "Poulet rôti aux herbes de Provence et légumes.",
+    "description": "Poulet rôti aux herbes de Provence et légumes",
     "histoire": "Plat classique français, très apprécié pour les repas familiaux du dimanche.",
     "preparation_time": "15 minutes",
     "cooking_time": "1 heure 15 minutes",
@@ -45,11 +47,12 @@
     "cooking_method": "four",
     "region": "Europe",
     "flavor": "salé",
-    "difficulty": "moyenne"
+    "difficulty": "moyenne",
+    "image":"./src/assets/images/recette3.jpg"
   },
   {
     "id": 4,
-    "description": "Tiramisu classique au café et mascarpone.",
+    "description": "Tiramisu classique au café et mascarpone",
     "histoire": "Dessert italien célèbre dans le monde entier, originaire du nord de l'Italie.",
     "preparation_time": "20 minutes",
     "cooking_time": "0 minutes",
@@ -61,11 +64,12 @@
     "cooking_method": "aucun",
     "region": "Europe",
     "flavor": "sucré",
-    "difficulty": "moyenne"
+    "difficulty": "moyenne",
+    "image":"./src/assets/images/recette4.png"
   },
   {
     "id": 5,
-    "description": "Curry de légumes au lait de coco.",
+    "description": "Curry de légumes au lait de coco",
     "histoire": "Plat asiatique végétarien épicé, populaire en Inde et en Thaïlande.",
     "preparation_time": "15 minutes",
     "cooking_time": "30 minutes",
@@ -77,11 +81,12 @@
     "cooking_method": "sauté/mijoté",
     "region": "Asie",
     "flavor": "salé",
-    "difficulty": "facile"
+    "difficulty": "facile",
+    "image":"./src/assets/images/recette5.png"
   },
   {
     "id": 6,
-    "description": "Sushi maki au saumon et avocat.",
+    "description": "Sushi maki au saumon et avocat",
     "histoire": "Plat japonais très populaire à travers le monde, souvent servi dans les restaurants japonais.",
     "preparation_time": "30 minutes",
     "cooking_time": "0 minutes",
@@ -93,11 +98,12 @@
     "cooking_method": "aucun",
     "region": "Asie",
     "flavor": "salé",
-    "difficulty": "moyenne"
+    "difficulty": "moyenne",
+    "image":"./src/assets/images/recette6.png"
   },
   {
     "id": 7,
-    "description": "Quiche lorraine classique.",
+    "description": "Quiche lorraine classique",
     "histoire": "Plat traditionnel français, originaire de Lorraine, idéal pour déjeuner ou brunch.",
     "preparation_time": "15 minutes",
     "cooking_time": "35 minutes",
@@ -109,11 +115,12 @@
     "cooking_method": "four",
     "region": "Europe",
     "flavor": "salé",
-    "difficulty": "facile"
+    "difficulty": "facile",
+    "image":"./src/assets/images/recette7.png"
   },
   {
     "id": 8,
-    "description": "Brownies au chocolat fondant.",
+    "description": "Brownies au chocolat fondant",
     "histoire": "Dessert américain célèbre pour sa texture fondante et son goût intense de chocolat.",
     "preparation_time": "15 minutes",
     "cooking_time": "25 minutes",
@@ -125,11 +132,12 @@
     "cooking_method": "four",
     "region": "Amérique",
     "flavor": "sucré",
-    "difficulty": "facile"
+    "difficulty": "facile",
+    "image":"./src/assets/images/recette8.png"
   },
   {
     "id": 9,
-    "description": "Paella espagnole aux fruits de mer.",
+    "description": "Paella espagnole aux fruits de mer",
     "histoire": "Plat emblématique d'Espagne, originaire de Valence, préparé traditionnellement avec riz et fruits de mer.",
     "preparation_time": "20 minutes",
     "cooking_time": "40 minutes",
@@ -141,11 +149,12 @@
     "cooking_method": "sauté/casserole",
     "region": "Europe",
     "flavor": "salé",
-    "difficulty": "moyenne"
+    "difficulty": "moyenne",
+    "image":"./src/assets/images/recette9.png"
   },
   {
     "id": 10,
-    "description": "Crêpes fines à la farine de blé.",
+    "description": "Crêpes fines à la farine de blé",
     "histoire": "Dessert français classique, souvent servi avec sucre, confiture ou Nutella.",
     "preparation_time": "10 minutes",
     "cooking_time": "15 minutes",
@@ -157,6 +166,7 @@
     "cooking_method": "poêle",
     "region": "Europe",
     "flavor": "sucré",
-    "difficulty": "facile"
+    "difficulty": "facile",
+    "image":"./src/assets/images/recette10.png"
   }
 ]
