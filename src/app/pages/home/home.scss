@@ -1,0 +1,137 @@
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.home-banner {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+
+    @media screen and (max-width: 440px) {
+        height: 20vh;
+    }
+}
+
+.home-banner-image {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.home-banner-content {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.home-why-choose-us {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+}
+
+.home-advantages-title {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.home-advantages-list {
+    list-style-type: none;
+    padding-inline-start: 20px;
+}
+
+// Block recettes styles
+.home-recettes-block {
+    width: 100%;
+}
+
+.recettes-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.recettes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.recette-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.recette-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.recette-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.recette-description {
+    color: white;
+    font-weight: 500;
+    margin: 0;
+    font-size: 0.95rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.retour-recettes {
+    background: var(--Schemes-Secondary-Container, #F3EDF8);
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: #ecdafa;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}
