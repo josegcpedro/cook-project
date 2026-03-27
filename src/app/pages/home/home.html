@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="home-page-container">
+    <div class="home-banner">
+        <img src="assets/images/recette2.jpg" alt="Home Banner" class="home-banner-image" />
+        <div class="home-banner-content">
+            <h4 class="home-banner-title">Bienvenue sur Délices & Saveurs</h4>
+            <h5 class="home-banner-subtitle">Découvrez simples, rapides et gourmandes pour toute la famille.</h5>
+        </div>
+    </div>
+    <div class="home-content">
+        <p>Délices & Saveurs est votre nouvelle destination cuisine. Chaque jour, nous partageons des idées de repas faciles à préparer, des desserts irrésistibles et des plats du monde entier.</p>
+
+        <div class="home-why-choose-us">
+            <h5 class="home-advantages-title">Pourquoi nous choisir</h5>
+            <ul class="home-advantages-list">
+                <li><strong>✔ </strong>Recettes faciles avec étapes claires</li>
+                <li><strong>✔ </strong>Ingrédients simples à trouver</li>
+                <li><strong>✔ </strong>Recettes rapides pour tous les jours</li>
+                <li><strong>✔ </strong>Conseils utiles pour réussir à coup sûr</li>
+                <li><strong>✔ </strong>Nouvelles idées chaque semaine</li>
+            </ul>
+        </div>
+        
+        <!-- Block recettes -->
+        <div class="home-recettes-block">
+            <div class="recettes-grid">
+                <div class="recette-card" *ngFor="let recette of recettes" (click)="navigateToRecette(recette.id)">
+                    <img [src]="recette.image" [alt]="recette.description" class="recette-image" />
+                    <div class="recette-info">
+                        <p class="recette-description">{{ recette.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="retour-recettes" (click)="navigateToRecettes()">Voir toutes les recettes</button>
+    </div>
+</div>

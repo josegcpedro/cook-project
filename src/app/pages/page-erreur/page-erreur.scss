@@ -63,11 +63,10 @@
 }
 
 .retour-accueil {
-    background: var(--Schemes-Secondary-Container, #E8DEF8);
+    background: var(--Schemes-Secondary-Container, #F3EDF8);
     border: none;
     border-radius: 50px;
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
     height: 50px;
     margin: 2rem auto 0;
     font-size: 1rem;
@@ -76,7 +75,7 @@
     transition: all 0.3s ease;
     
     &:hover {
-        background: #d4c5f0;
+        background: #ecdafa;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
