@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-erreur',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './page-erreur.html',
   styleUrl: './page-erreur.scss',
 })
-export class PageErreur {}
+export class PageErreur {
+  constructor(private router: Router) {}
+
+  retourAccueil(): void {
+    this.router.navigate(['/home']);
+  }
+}
