@@ -1,0 +1,26 @@
+# --For angular 17+ version that support Node.js 18.x
+name: Deploy Angular App
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x' # Use Node.js 18.x, compatible with Angular 17+
+
+      - name: Install dependencies
+        run: npm install # Install dependencies using npm 
+
+      - name: Build Angular project
+        run: npm run build -- --configuration production # Build the project using npm
+
+      - name: Run tests
+        run: npm test -- --watch=false --browsers=ChromeHeadless # Run tests using pnpm
