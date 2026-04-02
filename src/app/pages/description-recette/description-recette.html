@@ -1,1 +1,58 @@
-<p>description-recette works!</p>
+<div class="description-recette-container">
+    <div class="description-recette-banner">
+        <img [src]="recette?.image" alt="Description Recette Banner" class="description-recette-banner-image" />
+    </div>
+
+    <div class="description-recette-content">
+        <div class="block-content">
+            <h5 class="description-recette-title">Petite description ?</h5>
+            <p class="description-recette-description">{{ recette?.description }}</p>
+        </div>
+
+        <div class="block-content">
+            <h5 class="description-recette-title">Histoire ?</h5>
+            <p class="description-recette-histoire">{{ recette?.histoire }}</p>
+        </div>
+
+        <div class="block-content">
+            <ul class="description-recette-informations">
+                <li class="description-recette-information-list">
+                    <p class="description-recette-information-items1">Temps de préparation : </p>
+                    <p class="description-recette-information-items">{{ recette?.preparation_time }}</p>
+                </li>
+                <li class="description-recette-information-list">
+                    <p class="description-recette-information-items1">Temps de cuisson : </p>
+                    <p class="description-recette-information-items">{{ recette?.cooking_time }}</p>
+                </li>
+                <li class="description-recette-information-list">
+                    <p class="description-recette-information-items1">Difficulté :</p>
+                    <p class="description-recette-information-items">{{ recette?.difficulty }}</p>
+                </li>
+                <li class="description-recette-information-list">
+                    <p class="description-recette-information-items1">Portions : </p>
+                    <p class="description-recette-information-items">{{ recette?.portion }}</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="block-content">
+            <h5 class="description-recette-title">Ingrédients ?</h5>
+            <ul class="description-recette-ingredients">
+                <li class="description-recette-ingredient-list" *ngFor="let ingredient of recette?.ingredients">{{
+                    ingredient }}</li>
+            </ul>
+        </div>
+
+        <div class="block-content">
+            <h5 class="description-recette-title">Préparation ?</h5>
+            <ol class="description-recette-steps">
+                <li class="description-recette-step-list" *ngFor="let preparation of recette?.preparation">{{
+                    preparation }}</li>
+            </ol>
+        </div>
+
+        <div class="block-content">
+            <button class="retour-recettes" (click)="navigateToRecettes()">Voir toutes les recettes</button>
+        </div>
+    </div>
+</div>
