@@ -7,7 +7,7 @@ import { PageErreur } from './pages/page-erreur/page-erreur';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home, title: 'Home' },
-  { path: 'recettes', component: Recettes, title: 'Recettes' },
+  { path: 'recettes', component: Recettes, title: 'Recettes', data: { showSearch: true }  },
   { path: 'recettes/:id', component: DescriptionRecette, title: 'Détails de la recette' },
   { path: 'error', component: PageErreur, title: 'Erreur' },
   { path: '**', redirectTo: '/error' }
