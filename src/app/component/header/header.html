@@ -3,4 +3,23 @@
         <img src="assets/image-logo/logo-cooking.svg" alt="Logo Délices & Saveurs" (click)="navigateToHome()"
             class="logo-image" />
     </div>
+    <div class="m3-search" *ngIf="showSearch">
+
+    <!-- ☰ menu -->
+    <button mat-icon-button (click)="openMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- input -->
+    <input
+      type="text"
+      placeholder="Rechercher..."
+      [formControl]="search"
+    />
+
+    <!-- clear search -->
+    <button *ngIf="search.value" mat-icon-button (click)="search.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
 </header>
