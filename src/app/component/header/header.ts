@@ -29,13 +29,29 @@ export class Header {
       .subscribe((event: any) => {
         updateVisibility(event.urlAfterRedirects);
       });
+      // Envoie la recherche dans l’URL
+    this.search.valueChanges.subscribe(value => {
+     this.router.navigate([], {
+      queryParams: { search: value },
+      queryParamsHandling: 'merge'
+    });
+  });
   }
-  // to filter
-  openMenu() {
-    console.log('menu ouvert');
-  }
+  // ouvre/ferme les filtres dans la page recettes
+openMenu() {
+  const current = this.router.url.includes('showFilters=true');
+  const newValue = current ? 'false' : 'true';
 
-  navigateToHome(): void {
-    this.router.navigate(['/home']);
-  }
+  this.router.navigate(['/recettes'], {
+    queryParams: { showFilters: newValue },
+    queryParamsHandling: 'merge'
+  });
 }
+
+
+// Retourne à la page d'accueil
+navigateToHome(): void {
+  this.router.navigate(['/home']);
+}
+}
+

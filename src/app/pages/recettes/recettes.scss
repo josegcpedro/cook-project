@@ -69,4 +69,68 @@
 }
 
 
+/* Conteneur général */
+.filtres-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Titre "Filtrer" */
+.filtres-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Groupe de filtres */
+.filtre-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Label du groupe */
+.filtre-label {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Boutons de choix */
+.filtre-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filtre-btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filtre-btn.active {
+  background: #ff6b00;
+  color: white;
+  border-color: #ff6b00;
+}
+
+/* Bouton "Montrer les X résultats" */
+.btn-resultats {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  background: #ff6b00;
+  color: white;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
 
