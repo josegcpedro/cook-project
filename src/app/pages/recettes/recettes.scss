@@ -69,4 +69,42 @@
 }
 
 
+/* Conteneur des filtres */
+.filters-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  overflow: visible;
+}
+/* Titre "Filtrer" */
+.filters-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+/* Groupe d’un filtre */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+/* Label du filtre */
+.filter-group label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+/* Menu déroulant */
+.filter-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='20' width='20' viewBox='0 0 20 20'><path d='M5 7l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
 

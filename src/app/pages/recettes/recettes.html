@@ -1,11 +1,73 @@
 <div class="recipes-page-container">
- 
+
   <div class="recipes-content">
+    <!-- Zone des filtres -->
+    <div class="filters-container" *ngIf="showFilters">
+
+  <h2 class="filters-title">Filtrer</h2>
+
+  <div class="filter-group">
+    <label>Type de plat</label>
+    <select [(ngModel)]="typePlat">
+      <option value="">Tous</option>
+      <option value="entrée">Entrée</option>
+      <option value="plat principal">Plat principal</option>
+      <option value="dessert">Dessert</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label>Type de cuisine</label>
+    <select [(ngModel)]="typeCuisine">
+      <option value="">Toutes</option>
+      <option value="italien">Italienne</option>
+      <option value="français">Française</option>
+      <option value="asiatique">Asiatique</option>
+      <option value="américain">Américaine</option>
+      <option value="espagnol">Espagnole</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label>Mode de cuisson</label>
+    <select [(ngModel)]="modeCuisson">
+      <option value="">Tous</option>
+      <option value="four">Au four</option>
+      <option value="aucun">Aucun</option>
+      <option value="sauté/mijoté">Sauté / Mijoté</option>
+      <option value="poêle">À la poêle</option>
+      <option value="sauté/casserole">Sauté / Casserole</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label>Région</label>
+    <select [(ngModel)]="region">
+      <option value="">Toutes</option>
+      <option value="Europe">Europe</option>
+      <option value="Asie">Asie</option>
+      <option value="Amérique">Amérique</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label>Sucré / Salé</label>
+    <select [(ngModel)]="sucreSale">
+      <option value="">Tous</option>
+      <option value="salé">Salé</option>
+      <option value="sucré">Sucré</option>
+    </select>
+  </div>
+
+</div>
+
 
     <!-- Block of all recipes -->
     <div class="recipes-block">
       <div class="recipes-grid">
-        <div class="recipes-card" *ngFor="let recette of recettes" (click)="navigateToRecette(recette.id)">
+
+        <!-- Affiche uniquement les recettes filtrées -->
+        <div class="recipes-card" *ngFor="let recette of filteredRecettes" (click)="navigateToRecette(recette.id)">
           <img [src]="recette.image" [alt]="recette.description" class="recipes-image" />
           <div class="recipes-info">
             <p class="recipes-description">{{ recette.description }}</p>
