@@ -11,23 +11,24 @@
       <div class="filtre-group">
         <div class="filtre-label">⭐ Type de plat</div>
         <div class="filtre-options">
-          <button class="filtre-btn">Entrée</button>
-          <button class="filtre-btn">Plat principal</button>
-          <button class="filtre-btn">Dessert</button>
-          <button class="filtre-btn">Apéritif</button>
-          <button class="filtre-btn">Soupe</button>
+          <button class="filtre-btn" (click)="typePlat='entrée'">Entrée</button>
+          <button class="filtre-btn" (click)="typePlat='plat principale'">Plat principal</button>
+          <button class="filtre-btn" (click)="typePlat='dessert'">Dessert</button>
+          <button class="filtre-btn" (click)="typePlat='aperitif'">Apéritif</button>
+          <button class="filtre-btn" (click)="typePlat='soupe'">Soupe</button>
+          <button class="filtre-btn" (click)="typePlat='salade'">Salade</button>
         </div>
       </div>
 
       <div class="filtre-group">
         <div class="filtre-label">⭐ Type de cuisine</div>
         <div class="filtre-options">
-          <button class="filtre-btn" (click)="typeCuisine=''">Toutes</button>
           <button class="filtre-btn" (click)="typeCuisine='italien'">Italienne</button>
+          <button class="filtre-btn" (click)="typeCuisine='végétarien'">Végétarien</button>
           <button class="filtre-btn" (click)="typeCuisine='français'">Française</button>
           <button class="filtre-btn" (click)="typeCuisine='asiatique'">Asiatique</button>
-          <button class="filtre-btn" (click)="typeCuisine='américain'">Américaine</button>
-          <button class="filtre-btn" (click)="typeCuisine='espagnol'">Espagnole</button>
+          <button class="filtre-btn" (click)="typeCuisine='mexicaine'">Mexicaine</button>
+          <button class="filtre-btn" (click)="typeCuisine='indienne'">Indienne</button>
         </div>
       </div>
 
@@ -36,10 +37,11 @@
         <div class="filtre-options">
           <button class="filtre-btn" (click)="modeCuisson=''">Tous</button>
           <button class="filtre-btn" (click)="modeCuisson='four'">Au four</button>
-          <button class="filtre-btn" (click)="modeCuisson='aucun'">Aucun</button>
-          <button class="filtre-btn" (click)="modeCuisson='sauté/mijoté'">Sauté / Mijoté</button>
+          <button class="filtre-btn" (click)="modeCuisson='frit'">Frit</button>
+          <button class="filtre-btn" (click)="modeCuisson='grillé'">Grillé</button>
           <button class="filtre-btn" (click)="modeCuisson='poêle'">À la poêle</button>
-          <button class="filtre-btn" (click)="modeCuisson='sauté/casserole'">Sauté / Casserole</button>
+          <button class="filtre-btn" (click)="modeCuisson='mijotée'">Mijotée</button>
+          <button class="filtre-btn" (click)="modeCuisson='vapeur'">Vapeur</button>
         </div>
       </div>
 
@@ -49,16 +51,17 @@
           <button class="filtre-btn" (click)="region=''">Toutes</button>
           <button class="filtre-btn" (click)="region='Europe'">Europe</button>
           <button class="filtre-btn" (click)="region='Asie'">Asie</button>
-          <button class="filtre-btn" (click)="region='Amérique'">Amérique</button>
+          <button class="filtre-btn" (click)="region='moyen-orient'">Moyen-orient</button>
+          <button class="filtre-btn" (click)="modeCuisson='afrique'">Afrique</button>
         </div>
       </div>
 
       <div class="filtre-group">
         <div class="filtre-label">⭐ Sucré / Salé</div>
         <div class="filtre-options">
-          <button class="filtre-btn" (click)="sucreSale=''">Tous</button>
-          <button class="filtre-btn" (click)="sucreSale='salé'">Salé</button>
           <button class="filtre-btn" (click)="sucreSale='sucré'">Sucré</button>
+          <button class="filtre-btn" (click)="sucreSale='salé'">Salé</button>
+          
         </div>
       </div>
 
