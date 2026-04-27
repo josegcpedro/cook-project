@@ -12,6 +12,14 @@
   align-items: center;
   padding: 1rem;
   gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.recipes-no-result {
+  color: var(--mat-sys-on-surface);
+  font-size: 1rem;
+  margin: 0;
 }
 
 // Block recettes styles
@@ -26,6 +34,13 @@
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
+  }
+
+  // Lone last card in a 2-col grid: center it and keep same visual width
+  .recipes-card:last-child:nth-child(odd) {
+    grid-column: 1 / 2;
+    justify-self: center;
+    width: 100%;
   }
 }
 

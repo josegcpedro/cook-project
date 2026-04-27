@@ -22,9 +22,10 @@ export class Header implements OnInit {
     private route: ActivatedRoute,
   ) {
 
-    // will only  show the search bar to route who start with "recettes"
+    // show the search bar only on the /recettes list page (not on /recettes/:id)
     const updateVisibility = (url: string) => {
-      this.showSearch = url.startsWith('/recettes');
+      const path = url.split('?')[0];
+      this.showSearch = path === '/recettes';
       if (this.showSearch) {
         this.updateSearchFromQuery();
       }

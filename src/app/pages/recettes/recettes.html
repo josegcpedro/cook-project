@@ -2,8 +2,11 @@
  
   <div class="recipes-content">
 
+    <!-- No results message -->
+    <p class="recipes-no-result" *ngIf="filteredRecettes.length === 0">Aucune recette trouvée.</p>
+
     <!-- Block of all recipes -->
-    <div class="recipes-block">
+    <div class="recipes-block" *ngIf="filteredRecettes.length > 0">
       <div class="recipes-grid">
         <div class="recipes-card" *ngFor="let recette of filteredRecettes" (click)="navigateToRecette(recette.id)">
           <img [src]="recette.image" [alt]="recette.description" class="recipes-image" />
