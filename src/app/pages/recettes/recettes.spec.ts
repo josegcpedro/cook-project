@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
 
 import { Recettes } from './recettes';
 
@@ -10,14 +9,6 @@ describe('Recettes', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Recettes],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            queryParams: { subscribe: () => {} }
-          }
-        }
-      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Recettes);

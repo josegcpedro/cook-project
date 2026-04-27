@@ -1,11 +1,11 @@
 <div class="recipes-page-container">
- 
+
   <div class="recipes-content">
 
     <!-- Block of all recipes -->
     <div class="recipes-block">
       <div class="recipes-grid">
-        <div class="recipes-card" *ngFor="let recette of filteredRecettes" (click)="navigateToRecette(recette.id)">
+        <div class="recipes-card" *ngFor="let recette of recettes" (click)="navigateToRecette(recette.id)">
           <img [src]="recette.image" [alt]="recette.description" class="recipes-image" />
           <div class="recipes-info">
             <p class="recipes-description">{{ recette.description }}</p>
