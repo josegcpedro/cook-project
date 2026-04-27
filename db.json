@@ -122,7 +122,7 @@
       "region": "Canton de Vaud",
       "flavor": "salé",
       "difficulty": "moyen",
-      "image": "assets/images/recette4.jpg"
+      "image": "assets/images/recette4.jpeg"
     },
     {
       "id": 5,
@@ -155,7 +155,7 @@
       "region": "Canton de Vaud",
       "flavor": "salé",
       "difficulty": "facile",
-      "image": "assets/images/recette5.jpg"
+      "image": "assets/images/recette5.jpeg"
     },
     {
       "id": 6,
@@ -189,7 +189,7 @@
       "region": "Canton de Genève",
       "flavor": "salé",
       "difficulty": "difficile",
-      "image": "assets/images/recette6.jpg"
+      "image": "assets/images/recette6.png"
     },
     {
       "id": 7,
@@ -252,7 +252,7 @@
       "region": "Canton de Genève",
       "flavor": "salé",
       "difficulty": "facile",
-      "image": "assets/images/recette8.jpg"
+      "image": "assets/images/recette8.png"
     },
     {
       "id": 9,
@@ -315,6 +315,6 @@
       "region": "Canton de Fribourg",
       "flavor": "salé",
       "difficulty": "facile",
-      "image": "assets/images/recette10.jpg"
+      "image": "assets/images/recette10.jpeg"
     }
 ]
