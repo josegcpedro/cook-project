@@ -18,6 +18,8 @@ export class Header {
   search = new FormControl('');
 
   constructor(private router: Router) {
+
+    // will only  show the search bar to route who start with "recettes"
     const updateVisibility = (url: string) => {
       this.showSearch = url.startsWith('/recettes');
     };
