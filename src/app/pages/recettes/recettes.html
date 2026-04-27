@@ -2,15 +2,85 @@
 
   <div class="recipes-content">
 
-    <!-- Block of all recipes -->
+    <!-- Filtres (affichés seulement si showFilters = true) -->
+    <div class="filters-container" *ngIf="showFilters">
+
+      <h2 class="filters-title">Filtrer</h2>
+
+      <!-- Groupes de filtres -->
+      <div class="filtre-group">
+        <div class="filtre-label">⭐ Type de plat</div>
+        <div class="filtre-options">
+          <button class="filtre-btn" (click)="typePlat='entrée'">Entrée</button>
+          <button class="filtre-btn" (click)="typePlat='plat principale'">Plat principal</button>
+          <button class="filtre-btn" (click)="typePlat='dessert'">Dessert</button>
+          <button class="filtre-btn" (click)="typePlat='aperitif'">Apéritif</button>
+          <button class="filtre-btn" (click)="typePlat='soupe'">Soupe</button>
+          <button class="filtre-btn" (click)="typePlat='salade'">Salade</button>
+        </div>
+      </div>
+
+      <div class="filtre-group">
+        <div class="filtre-label">⭐ Type de cuisine</div>
+        <div class="filtre-options">
+          <button class="filtre-btn" (click)="typeCuisine='italien'">Italienne</button>
+          <button class="filtre-btn" (click)="typeCuisine='végétarien'">Végétarien</button>
+          <button class="filtre-btn" (click)="typeCuisine='français'">Française</button>
+          <button class="filtre-btn" (click)="typeCuisine='asiatique'">Asiatique</button>
+          <button class="filtre-btn" (click)="typeCuisine='mexicaine'">Mexicaine</button>
+          <button class="filtre-btn" (click)="typeCuisine='indienne'">Indienne</button>
+        </div>
+      </div>
+
+      <div class="filtre-group">
+        <div class="filtre-label">⭐ Mode de cuisson</div>
+        <div class="filtre-options">
+          <button class="filtre-btn" (click)="modeCuisson=''">Tous</button>
+          <button class="filtre-btn" (click)="modeCuisson='four'">Au four</button>
+          <button class="filtre-btn" (click)="modeCuisson='frit'">Frit</button>
+          <button class="filtre-btn" (click)="modeCuisson='grillé'">Grillé</button>
+          <button class="filtre-btn" (click)="modeCuisson='poêle'">À la poêle</button>
+          <button class="filtre-btn" (click)="modeCuisson='mijotée'">Mijotée</button>
+          <button class="filtre-btn" (click)="modeCuisson='vapeur'">Vapeur</button>
+        </div>
+      </div>
+
+      <div class="filtre-group">
+        <div class="filtre-label">⭐ Région</div>
+        <div class="filtre-options">
+          <button class="filtre-btn" (click)="region=''">Toutes</button>
+          <button class="filtre-btn" (click)="region='Europe'">Europe</button>
+          <button class="filtre-btn" (click)="region='Asie'">Asie</button>
+          <button class="filtre-btn" (click)="region='moyen-orient'">Moyen-orient</button>
+          <button class="filtre-btn" (click)="modeCuisson='afrique'">Afrique</button>
+        </div>
+      </div>
+
+      <div class="filtre-group">
+        <div class="filtre-label">⭐ Sucré / Salé</div>
+        <div class="filtre-options">
+          <button class="filtre-btn" (click)="sucreSale='sucré'">Sucré</button>
+          <button class="filtre-btn" (click)="sucreSale='salé'">Salé</button>
+          
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recettes (toujours visibles) -->
     <div class="recipes-block">
       <div class="recipes-grid">
-        <div class="recipes-card" *ngFor="let recette of recettes" (click)="navigateToRecette(recette.id)">
+
+        <div class="recipes-card"
+             *ngFor="let recette of filteredRecettes"
+             (click)="navigateToRecette(recette.id)">
+
           <img [src]="recette.image" [alt]="recette.description" class="recipes-image" />
           <div class="recipes-info">
             <p class="recipes-description">{{ recette.description }}</p>
           </div>
         </div>
+
       </div>
     </div>
 
