@@ -1,61 +1,96 @@
-# CookProject
+# Cook Project EPSIC – Module 322 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+## 🔧 Prérequis
 
-## Development server
 
-To start a local development server, run:
+- *Node.js* (18) – [https://nodejs.org/](https://nodejs.org/)
+- *Angular CLI* –
+
+```bash
+npm install -g @angular/cli
+```
+
+- *JSON Server*
+
+```bash
+npm install -g json-server
+```
+
+---
+
+## Setup du projet
+
+### 1. Installer les dépendances
+
+```bash
+npm install
+```
+
+---
+
+## Lancer l'application en local
+
+### Démarrer la base de donnée JSON
+
+```bash
+json-server --watch db.json --port 3000
+```
+L'api est disponible sur
+`http://localhost:3000`
+
+
+### Démarrer le front Angular
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+App accessible sur
 
-## Code scaffolding
+`http://localhost:4200/home`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
+### Structure du projet
+
+```text
+src/
+├── app/
+│   ├── component/
+│   │   └── header/                 
+│   ├── pages/
+│   │   ├── description-recette/                
+│   │   │   ├── description-recette.ts
+│   │   │   └── description-recette.html
+│   │   │   └── description-recette.scss
+│   │   ├── Home/
+│   │   │   ├── home.ts
+│   │   │   ├── home.html
+│   │   │   └── home.scss
+│   │   ├── Page-erreur/
+│   │   │   ├── page-erreur.html
+│   │   │   ├── page-erreur.ts
+│   │   │   └── page-erreur.scss
+│   │   ├── Recettes/
+│   │   │   ├── recettes.html
+│   │   │   ├── recettes.ts
+│   │   │   └── recettes.scss
+│   │   
+│   │  
+│   ├── services/
+│   │   ├── data-service.ts
+│   │   └── data-service.spec.ts
+│   ├── assets/                    
+│   │   ├── Image-logo
+│   │   ├── image404
+│   │   └── images
+│   │
+│   ├── app.routes.ts
+│   ├── app.component.ts
+│   ├── app.config.ts
+│   └── app.component.scss
+├── styles.scss
+├── index.html
+├── server.ts
+└── main.ts
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-
