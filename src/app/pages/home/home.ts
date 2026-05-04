@@ -5,7 +5,7 @@ import recettesData from '../../../../db.json';
 
 export interface Recette {
   id: number;
-  description: string;
+  title: string;
   image: string;
 }
 
