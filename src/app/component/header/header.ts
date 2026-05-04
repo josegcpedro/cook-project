@@ -21,7 +21,8 @@ export class Header {
 
     // will only  show the search bar to route who start with "recettes"
     const updateVisibility = (url: string) => {
-      this.showSearch = url.startsWith('/recettes');
+      const path = url.split('?')[0];
+      this.showSearch = path === '/recettes';
     };
 
     updateVisibility(this.router.url);
