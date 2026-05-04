@@ -61,7 +61,7 @@
         <div class="filtre-options">
           <button class="filtre-btn" (click)="sucreSale='sucré'">Sucré</button>
           <button class="filtre-btn" (click)="sucreSale='salé'">Salé</button>
-          
+
         </div>
       </div>
 
@@ -71,9 +71,7 @@
     <div class="recipes-block">
       <div class="recipes-grid">
 
-        <div class="recipes-card"
-             *ngFor="let recette of filteredRecettes"
-             (click)="navigateToRecette(recette.id)">
+        <div class="recipes-card" *ngFor="let recette of filteredRecettes" (click)="navigateToRecette(recette.id)">
 
           <img [src]="recette.image" [alt]="recette.description" class="recipes-image" />
           <div class="recipes-info">
