@@ -24,9 +24,9 @@
         <div class="home-recettes-block">
             <div class="recettes-grid">
                 <div class="recette-card" *ngFor="let recette of recettes" (click)="navigateToRecette(recette.id)">
-                    <img [src]="recette.image" [alt]="recette.description" class="recette-image" />
+                    <img [src]="recette.image" [alt]="recette.title" class="recette-image" />
                     <div class="recette-info">
-                        <p class="recette-description">{{ recette.description }}</p>
+                        <p class="recette-description">{{ recette.title }}</p>
                     </div>
                 </div>
             </div>

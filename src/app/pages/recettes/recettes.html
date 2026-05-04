@@ -75,9 +75,9 @@
              *ngFor="let recette of filteredRecettes"
              (click)="navigateToRecette(recette.id)">
 
-          <img [src]="recette.image" [alt]="recette.description" class="recipes-image" />
+          <img [src]="recette.image" [alt]="recette.title" class="recipes-image" />
           <div class="recipes-info">
-            <p class="recipes-description">{{ recette.description }}</p>
+            <p class="recipes-description">{{ recette.title }}</p>
           </div>
         </div>
 

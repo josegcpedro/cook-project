@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 export interface Recette {
   id: number;
-  description: string;
+  title: string;
   image: string;
 
   dish_type: string;
@@ -41,7 +41,7 @@ export class Recettes implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.recettes = recettesData.slice(0, 10);
+    this.recettes = recettesData.slice(0, 30);
 
     // Récupère la recherche depuis l’URL
     this.route.queryParams.subscribe(params => {
@@ -63,7 +63,7 @@ export class Recettes implements OnInit {
     const search = this.searchText.toLowerCase().trim();
 
     return this.recettes.filter(r =>
-      r.description.toLowerCase().includes(search) &&
+      r.title.toLowerCase().includes(search) &&
       (this.typePlat === '' || r.dish_type === this.typePlat) &&
       (this.typeCuisine === '' || r.cuisine_type === this.typeCuisine) &&
       (this.modeCuisson === '' || r.cooking_method === this.modeCuisson) &&
