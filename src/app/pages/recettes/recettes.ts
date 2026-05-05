@@ -1,22 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import recettesData from '../../../../db.json';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-
-export interface Recette {
-  id: number;
-  title: string;
-  image: string;
-
-  dish_type: string;
-  cuisine_type: string;
-  cooking_method: string;
-  region: string;
-  flavor: string;
-}
+import { DataService, Recette } from '../../services/data-service';
 
 @Component({
   selector: 'app-recettes',
@@ -25,7 +13,6 @@ export interface Recette {
   styleUrl: './recettes.scss',
 })
 export class Recettes implements OnInit {
-
   // Texte saisi pour filtrer les recettes
   searchText: string = '';
 
@@ -38,10 +25,14 @@ export class Recettes implements OnInit {
 
   recettes: Recette[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private dataService: DataService,
+  ) {}
 
   ngOnInit(): void {
-    this.recettes = recettesData.slice(0, 30);
+    this.recettes = this.dataService.getRecettes().slice(0, 30);
 
     // Récupère la recherche depuis l’URL
     this.route.queryParams.subscribe(params => {
@@ -75,5 +66,4 @@ export class Recettes implements OnInit {
   navigateToRecette(id: number): void {
     this.router.navigate(['/recettes', id]);
   }
-
 }
