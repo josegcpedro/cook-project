@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import recettesData from '../../../../db.json';
-
-export interface Recette {
-  id: number;
-  title: string;
-  image: string;
-}
+import { DataService, Recette } from '../../services/data-service';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +12,13 @@ export interface Recette {
 export class Home implements OnInit {
   recettes: Recette[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private dataService: DataService,
+  ) {}
 
   ngOnInit(): void {
-    this.recettes = recettesData.slice(0, 4);
+    this.recettes = this.dataService.getRecettes().slice(0, 4);
   }
 
   navigateToRecettes(): void {
