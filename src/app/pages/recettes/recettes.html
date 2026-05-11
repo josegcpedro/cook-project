@@ -2,72 +2,85 @@
 
   <div class="recipes-content">
 
-    <!-- Filtres (affichés seulement si showFilters = true) -->
+    <!--Filters (visible only when showFilters = true) -->
     <div class="filters-container" *ngIf="showFilters">
 
       <h2 class="filters-title">Filtrer</h2>
 
-      <!-- Groupes de filtres -->
+      <!--  Filter groups  -->
       <div class="filtre-group">
-        <div class="filtre-label">⭐ Type de plat</div>
-        <div class="filtre-options">
-          <button class="filtre-btn" (click)="typePlat='entrée'">Entrée</button>
-          <button class="filtre-btn" (click)="typePlat='plat principale'">Plat principal</button>
-          <button class="filtre-btn" (click)="typePlat='dessert'">Dessert</button>
-          <button class="filtre-btn" (click)="typePlat='aperitif'">Apéritif</button>
-          <button class="filtre-btn" (click)="typePlat='soupe'">Soupe</button>
-          <button class="filtre-btn" (click)="typePlat='salade'">Salade</button>
-        </div>
+        <div class="filtre-label">Type de plat</div>
+          <mat-button-toggle-group [(ngModel)]="pendingFilters.typePlat">
+            <mat-button-toggle value="">Tous</mat-button-toggle>
+            <mat-button-toggle value="Entrée">Entrée</mat-button-toggle>
+            <mat-button-toggle value="Plat principal">Plat principal</mat-button-toggle>
+            <mat-button-toggle value="Accompagnement">Accompagnement</mat-button-toggle>
+            <mat-button-toggle value="Dessert">Dessert</mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
 
       <div class="filtre-group">
-        <div class="filtre-label">⭐ Type de cuisine</div>
-        <div class="filtre-options">
-          <button class="filtre-btn" (click)="typeCuisine='italien'">Italienne</button>
-          <button class="filtre-btn" (click)="typeCuisine='végétarien'">Végétarien</button>
-          <button class="filtre-btn" (click)="typeCuisine='français'">Française</button>
-          <button class="filtre-btn" (click)="typeCuisine='asiatique'">Asiatique</button>
-          <button class="filtre-btn" (click)="typeCuisine='mexicaine'">Mexicaine</button>
-          <button class="filtre-btn" (click)="typeCuisine='indienne'">Indienne</button>
-        </div>
+        <div class="filtre-label">Type de cuisine</div>
+        <mat-button-toggle-group [(ngModel)]="pendingFilters.typeCuisine">
+          <mat-button-toggle value="">Toutes</mat-button-toggle>
+          <mat-button-toggle value="suisse">Suisse</mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
 
       <div class="filtre-group">
-        <div class="filtre-label">⭐ Mode de cuisson</div>
-        <div class="filtre-options">
-          <button class="filtre-btn" (click)="modeCuisson=''">Tous</button>
-          <button class="filtre-btn" (click)="modeCuisson='four'">Au four</button>
-          <button class="filtre-btn" (click)="modeCuisson='frit'">Frit</button>
-          <button class="filtre-btn" (click)="modeCuisson='grillé'">Grillé</button>
-          <button class="filtre-btn" (click)="modeCuisson='poêle'">À la poêle</button>
-          <button class="filtre-btn" (click)="modeCuisson='mijotée'">Mijotée</button>
-          <button class="filtre-btn" (click)="modeCuisson='vapeur'">Vapeur</button>
-        </div>
-      </div>
+  <div class="filtre-label">Mode de cuisson</div>
+
+      <mat-button-toggle-group [(ngModel)]="pendingFilters.modeCuisson">
+        <mat-button-toggle value="">Tous</mat-button-toggle>
+        <mat-button-toggle value="fondu">Fondu</mat-button-toggle>
+        <mat-button-toggle value="fondu/grillé">Fondu / Grillé</mat-button-toggle>
+        <mat-button-toggle value="poêlé">Poêlé</mat-button-toggle>
+        <mat-button-toggle value="frit">Frit</mat-button-toggle>
+        <mat-button-toggle value="mijoté">Mijoté</mat-button-toggle>
+        <mat-button-toggle value="gratiné">Gratiné</mat-button-toggle>
+        <mat-button-toggle value="au four">Au four</mat-button-toggle>
+        <mat-button-toggle value="poché">Poché</mat-button-toggle>
+      </mat-button-toggle-group>
+</div>
+
 
       <div class="filtre-group">
-        <div class="filtre-label">⭐ Région</div>
-        <div class="filtre-options">
-          <button class="filtre-btn" (click)="region=''">Toutes</button>
-          <button class="filtre-btn" (click)="region='Europe'">Europe</button>
-          <button class="filtre-btn" (click)="region='Asie'">Asie</button>
-          <button class="filtre-btn" (click)="region='moyen-orient'">Moyen-orient</button>
-          <button class="filtre-btn" (click)="modeCuisson='afrique'">Afrique</button>
-        </div>
-      </div>
+  <div class="filtre-label">Région</div>
+
+    <mat-button-toggle-group [(ngModel)]="pendingFilters.region">
+      <mat-button-toggle value="">Toutes</mat-button-toggle>
+      <mat-button-toggle value="Fribourg">Fribourg</mat-button-toggle>
+      <mat-button-toggle value="Valais">Valais</mat-button-toggle>
+      <mat-button-toggle value="Berne">Berne</mat-button-toggle>
+      <mat-button-toggle value="Vaud">Vaud</mat-button-toggle>
+      <mat-button-toggle value="Genève">Genève</mat-button-toggle>
+      <mat-button-toggle value="Canton de Vaud">Canton de Vaud</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+
 
       <div class="filtre-group">
-        <div class="filtre-label">⭐ Sucré / Salé</div>
-        <div class="filtre-options">
-          <button class="filtre-btn" (click)="sucreSale='sucré'">Sucré</button>
-          <button class="filtre-btn" (click)="sucreSale='salé'">Salé</button>
+  <div class="filtre-label">Sucré / Salé</div>
 
-        </div>
-      </div>
+    <mat-button-toggle-group [(ngModel)]="pendingFilters.sucreSale">
+      <mat-button-toggle value="">Tous</mat-button-toggle>
+      <mat-button-toggle value="sucré">Sucré</mat-button-toggle>
+      <mat-button-toggle value="salé">Salé</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+<button class="btn-resultats" (click)="applyFilters()">
+  <mat-icon>search</mat-icon>
+  Montrer les {{ countPendingResults }} résultats
+</button>
 
     </div>
+    <!--Back button--> 
+    <button class="btn-retour-small" (click)="clearAllFilters()">
+      <mat-icon>arrow_back</mat-icon>
+      Retour
+    </button>
 
-    <!-- Recettes (toujours visibles) -->
+    <!-- Recipes (always visible) -->
     <div class="recipes-block">
       <div class="recipes-grid">
 
