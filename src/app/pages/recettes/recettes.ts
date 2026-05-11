@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { DataService, Recette } from '../../services/data-service';
+import { DataService } from '../../services/data-service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { Recette } from '../../services/recette.interface';
 
 @Component({
   selector: 'app-recettes',
