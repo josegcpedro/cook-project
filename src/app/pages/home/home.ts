@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DataService, Recette } from '../../services/data-service';
+import { DataService} from '../../services/data-service';
+import { Recette } from '../../services/recette.interface';
 
 @Component({
   selector: 'app-home',
