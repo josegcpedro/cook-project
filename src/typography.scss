@@ -11,33 +11,39 @@ body {
     font-weight: 100;
 }
 
-h1 {
+h1,
+.style-h1 {
     font-weight: 900;
     font-size: clamp(10rem, 23vw, 23.4rem);
 }
 
-h2 {
+h2,
+.style-h2 {
     font-weight: 900;
     font-size: clamp(3rem, 4vw, 5.8rem);
 }
 
-h3 {
+h3,
+.style-h3 {
     font-weight: 700;
     font-size: clamp(2rem, 3vw, 4rem);
 }
 
-h4 {
+h4,
+.style-h4 {
     font-weight: 600;
     font-size: clamp(1.5rem, 2vw, 2.5rem);
 }
 
-h5 {
+h5,
+.style-h5 {
     font-weight: 500;
     font-size: clamp(1.2rem, 1.5vw, 2rem);
     line-height: 1.2;
 }
 
-h6 {
+h6,
+.style-h6 {
     font-weight: 100;
     font-size: 16;
 

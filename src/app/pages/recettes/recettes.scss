@@ -7,6 +7,7 @@
 
 // Block content styles of all recipes
 .recipes-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,20 +83,23 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+// filter container
+.filters-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #eae9f2ec;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  max-width: 1024px;
+  margin: auto;
+  overflow-x: hidden;
 
-/* Main container */
-.filtres-container {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* "Filter" title */
-.filtres-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  h5 {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* Filter group */
@@ -103,72 +107,102 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Group label */
 .filtre-label {
   font-size: 18px;
   font-weight: 600;
+  color: #8e6cff;
 }
 
 /* Main results button */
 .btn-resultats {
-  width: 100%;                 
-  padding: 14px 18px;          
-  background: #f5f0ff;         
-  border: 1px solid #d6c8ff;   
-  border-radius: 12px;         
-  display: flex;               
-  align-items: center;         
-  justify-content: center;    
-  gap: 10px;                   
-  font-size: 16px;             
-  font-weight: 500;            
-  color: #4a3f5e;              
-  cursor: pointer;             
-  transition: 0.2s ease;       
+  padding: 5px 10px;
+  background: #f5f0ff;
+  border: 1px solid #d6c8ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a3f5e;
+  cursor: pointer;
+  transition: 0.2s ease;
+  width: fit-content;
+  justify-self: center;
+  margin: 1rem auto;
 }
 
 /* Hover effect */
 .btn-resultats:hover {
-  background: #ece3ff;         
-  border-color: #c7b6ff;       
+  background: #ece3ff;
+  border-color: #c7b6ff;
 }
 
 /* Icon style */
 .btn-resultats mat-icon {
-  font-size: 20px;             
-  color: #4a3f5e;              
+  font-size: 20px;
+  color: #4a3f5e;
 }
 
-/* Styling for the selected/active toggle button */
-mat-button-toggle.mat-button-toggle-checked {
-  background-color: #e5c9e9 !important;
-  color: white !important;
-  border-color: #e5c9e9 !important;
-  font-weight: 600;
+.mat-button-toggle-group {
+  border: none;
+  border-radius: unset;
+  gap: 1rem;
+  display: flex;
 }
+
+.mat-button-toggle {
+  border: 1px solid #291f47;
+  border-radius: 12px;
+}
+
+.mat-button-toggle-button {
+
+}
+
+.mat-button-toggle-label-content {
+  width: fit-content;
+  height: fit-content;
+  font-size: 9px;
+}
+
+mat-button-toggle-group {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
 /* Small back button container*/
 .btn-retour-small {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  background: #f2f2f2;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
+  background: var(--Schemes-Secondary-Container, #F3EDF8);
+  border: none;
+  border-radius: 50px;
+  width: 100%;
+  height: 50px;
+  font-size: 1rem;
   font-weight: 500;
-  color: #333;
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #ecdafa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 }
-/* Hover effect */
-.btn-retour-small:hover {
-  background: #e6e6e6;
-}
+
 /* Icon size inside the button */
 .btn-retour-small mat-icon {
   font-size: 18px;
 }
-

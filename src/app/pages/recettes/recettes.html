@@ -5,80 +5,75 @@
     <!--Filters (visible only when showFilters = true) -->
     <div class="filters-container" *ngIf="showFilters">
 
-      <h2 class="filters-title">Filtrer</h2>
+      <h5 class="filters-title">Filtrer</h5>
 
       <!--  Filter groups  -->
       <div class="filtre-group">
         <div class="filtre-label">Type de plat</div>
-          <mat-button-toggle-group [(ngModel)]="pendingFilters.typePlat">
-            <mat-button-toggle value="">Tous</mat-button-toggle>
-            <mat-button-toggle value="Entrée">Entrée</mat-button-toggle>
-            <mat-button-toggle value="Plat principal">Plat principal</mat-button-toggle>
-            <mat-button-toggle value="Accompagnement">Accompagnement</mat-button-toggle>
-            <mat-button-toggle value="Dessert">Dessert</mat-button-toggle>
+        <mat-button-toggle-group [(ngModel)]="pendingFilters.typePlat">
+          <mat-button-toggle class="style-h5" value="">Tous</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Entrée">Entrée</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Plat principal">Plat principal</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Accompagnement">Accompagnement</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Dessert">Dessert</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
 
       <div class="filtre-group">
         <div class="filtre-label">Type de cuisine</div>
         <mat-button-toggle-group [(ngModel)]="pendingFilters.typeCuisine">
-          <mat-button-toggle value="">Toutes</mat-button-toggle>
-          <mat-button-toggle value="suisse">Suisse</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="">Toutes</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="suisse">Suisse</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
 
       <div class="filtre-group">
-  <div class="filtre-label">Mode de cuisson</div>
+        <div class="filtre-label">Mode de cuisson</div>
 
-      <mat-button-toggle-group [(ngModel)]="pendingFilters.modeCuisson">
-        <mat-button-toggle value="">Tous</mat-button-toggle>
-        <mat-button-toggle value="fondu">Fondu</mat-button-toggle>
-        <mat-button-toggle value="fondu/grillé">Fondu / Grillé</mat-button-toggle>
-        <mat-button-toggle value="poêlé">Poêlé</mat-button-toggle>
-        <mat-button-toggle value="frit">Frit</mat-button-toggle>
-        <mat-button-toggle value="mijoté">Mijoté</mat-button-toggle>
-        <mat-button-toggle value="gratiné">Gratiné</mat-button-toggle>
-        <mat-button-toggle value="au four">Au four</mat-button-toggle>
-        <mat-button-toggle value="poché">Poché</mat-button-toggle>
-      </mat-button-toggle-group>
-</div>
-
-
-      <div class="filtre-group">
-  <div class="filtre-label">Région</div>
-
-    <mat-button-toggle-group [(ngModel)]="pendingFilters.region">
-      <mat-button-toggle value="">Toutes</mat-button-toggle>
-      <mat-button-toggle value="Fribourg">Fribourg</mat-button-toggle>
-      <mat-button-toggle value="Valais">Valais</mat-button-toggle>
-      <mat-button-toggle value="Berne">Berne</mat-button-toggle>
-      <mat-button-toggle value="Vaud">Vaud</mat-button-toggle>
-      <mat-button-toggle value="Genève">Genève</mat-button-toggle>
-      <mat-button-toggle value="Canton de Vaud">Canton de Vaud</mat-button-toggle>
-    </mat-button-toggle-group>
-</div>
+        <mat-button-toggle-group [(ngModel)]="pendingFilters.modeCuisson">
+          <mat-button-toggle class="style-h5" value="">Tous</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="fondu">Fondu</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="fondu/grillé">Fondu / Grillé</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="poêlé">Poêlé</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="frit">Frit</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="mijoté">Mijoté</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="gratiné">Gratiné</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="au four">Au four</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="poché">Poché</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
 
 
       <div class="filtre-group">
-  <div class="filtre-label">Sucré / Salé</div>
+        <div class="filtre-label">Région</div>
 
-    <mat-button-toggle-group [(ngModel)]="pendingFilters.sucreSale">
-      <mat-button-toggle value="">Tous</mat-button-toggle>
-      <mat-button-toggle value="sucré">Sucré</mat-button-toggle>
-      <mat-button-toggle value="salé">Salé</mat-button-toggle>
-    </mat-button-toggle-group>
-</div>
-<button class="btn-resultats" (click)="applyFilters()">
-  <mat-icon>search</mat-icon>
-  Montrer les {{ countPendingResults }} résultats
-</button>
+        <mat-button-toggle-group [(ngModel)]="pendingFilters.region">
+          <mat-button-toggle class="style-h5" value="">Toutes</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Fribourg">Fribourg</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Valais">Valais</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Berne">Berne</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Vaud">Vaud</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Genève">Genève</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="Canton de Vaud">Canton de Vaud</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+
+      <div class="filtre-group">
+        <div class="filtre-label">Sucré / Salé</div>
+
+        <mat-button-toggle-group [(ngModel)]="pendingFilters.sucreSale">
+          <mat-button-toggle class="style-h5" value="">Tous</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="sucré">Sucré</mat-button-toggle>
+          <mat-button-toggle class="style-h5" value="salé">Salé</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <button class="btn-resultats" (click)="applyFilters()">
+        <mat-icon>search</mat-icon>
+        Montrer les {{ countPendingResults }} résultats
+      </button>
 
     </div>
-    <!--Back button--> 
-    <button class="btn-retour-small" (click)="clearAllFilters()">
-      <mat-icon>arrow_back</mat-icon>
-      Retour
-    </button>
 
     <!-- Recipes (always visible) -->
     <div class="recipes-block">
@@ -94,6 +89,11 @@
 
       </div>
     </div>
+
+    <!--Back button-->
+    <button class="btn-retour-small" (click)="clearAllFilters()">
+      Retour
+    </button>
 
   </div>
 </div>
