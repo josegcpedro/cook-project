@@ -114,7 +114,11 @@ export class Recettes {
     this.pendingFilters = { typePlat: '', typeCuisine: '', modeCuisson: '', region: '', sucreSale: '' };
     this.appliedFilters$.next({ ...this.pendingFilters });
     this.pendingFilters$.next({ ...this.pendingFilters });
-    this.showFilters = true;
+    this.showFilters = false;
+    this.router.navigate(['/recettes'], {
+      queryParams: { search: null, showFilters: null },
+      queryParamsHandling: 'merge'
+    });
   }
 
   navigateToRecette(id: number): void {
