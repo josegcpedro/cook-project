@@ -1,4 +1,7 @@
-[
+{
+
+"recettes":
+  [
   {
     "id": 1,
     "title": "Fondue au fromage",
@@ -522,3 +525,4 @@
     "image": "assets/images/recette29.png"
   }
 ]
+}

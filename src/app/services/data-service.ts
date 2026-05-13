@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import recettesData from '../../../db.json';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Recette } from './recette.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private readonly recettes: Recette[] = recettesData as Recette[];
+  private readonly apiUrl = 'http://localhost:3000/recettes';
 
-  getRecettes(): Recette[] {
-    return this.recettes;
+  constructor(private http: HttpClient) {}
+
+  getRecettes(): Observable<Recette[]> {
+    return this.http.get<Recette[]>(this.apiUrl);
   }
 
-  getRecetteById(id: number): Recette | undefined {
-    return this.recettes.find((r) => r.id === id);
+  getRecetteById(id: number): Observable<Recette> {
+    return this.http.get<Recette>(`${this.apiUrl}/${id}`);
   }
 }

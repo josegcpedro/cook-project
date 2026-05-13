@@ -6,22 +6,26 @@ import { Recette } from '../../services/recette.interface';
 
 @Component({
   selector: 'app-description-recette',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './description-recette.html',
   styleUrl: './description-recette.scss',
 })
 export class DescriptionRecette implements OnInit {
-  recette: Recette | undefined;
+  recette?: Recette;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private dataService: DataService,
+    private dataService: DataService
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.recette = this.dataService.getRecetteById(id);
+
+    this.dataService.getRecetteById(id).subscribe((data) => {
+      this.recette = data;
+    });
   }
 
   navigateToRecettes(): void {
