@@ -7,7 +7,8 @@
         </div>
     </div>
     <div class="home-content">
-        <p>Délices & Saveurs est votre nouvelle destination cuisine. Chaque jour, nous partageons des idées de repas faciles à préparer, des desserts irrésistibles et des plats du monde entier.</p>
+        <p>Délices & Saveurs est votre nouvelle destination cuisine. Chaque jour, nous partageons des idées de repas
+            faciles à préparer, des desserts irrésistibles et des plats du monde entier.</p>
 
         <div class="home-why-choose-us">
             <h5 class="home-advantages-title">Pourquoi nous choisir</h5>
@@ -19,12 +20,13 @@
                 <li><strong>✔ </strong>Nouvelles idées chaque semaine</li>
             </ul>
         </div>
-        
+
         <!-- Block recettes -->
         <div class="home-recettes-block">
             <div class="recettes-grid">
-                <div class="recette-card" *ngFor="let recette of recettes" (click)="navigateToRecette(recette.id)">
-                    <img [src]="recette.image" [alt]="recette.title" class="recette-image" />
+                <div class="recette-card" *ngFor="let recette of recettes$ | async"
+                    (click)="navigateToRecette(recette.id)"> <img [src]="recette.image" [alt]="recette.title"
+                        class="recette-image" />
                     <div class="recette-info">
                         <p class="recette-description">{{ recette.title }}</p>
                     </div>

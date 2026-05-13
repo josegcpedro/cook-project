@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+
 import { DataService } from '../../services/data-service';
-import { Recette } from '../../services/recette.interface';
+import { Recette } from '../../recette.interface';
 
 @Component({
   selector: 'app-description-recette',
@@ -11,21 +13,17 @@ import { Recette } from '../../services/recette.interface';
   templateUrl: './description-recette.html',
   styleUrl: './description-recette.scss',
 })
-export class DescriptionRecette implements OnInit {
-  recette?: Recette;
+export class DescriptionRecette {
+
+  recette$: Observable<Recette>;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.dataService.getRecetteById(id).subscribe((data) => {
-      this.recette = data;
-    });
+    this.recette$ = this.dataService.getRecetteById(id);
   }
 
   navigateToRecettes(): void {
