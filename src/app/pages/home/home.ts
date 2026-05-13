@@ -1,25 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DataService} from '../../services/data-service';
-import { Recette } from '../../services/recette.interface';
+import { map } from 'rxjs';
+
+import { DataService } from '../../services/data-service';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements OnInit {
-  recettes: Recette[] = [];
+export class Home {
+
+  recettes$;
 
   constructor(
     private router: Router,
-    private dataService: DataService,
-  ) {}
-
-  ngOnInit(): void {
-    this.recettes = this.dataService.getRecettes().slice(0, 4);
+    private dataService: DataService
+  ) {
+    this.recettes$ = this.dataService.getRecettes().pipe(
+      map(recettes => recettes.slice(0, 4))
+    );
   }
 
   navigateToRecettes(): void {

@@ -1,124 +1,123 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { DataService } from '../../services/data-service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { Recette } from '../../services/recette.interface';
+import { MatIconModule } from '@angular/material/icon';
+
+import { DataService } from '../../services/data-service';
 
 @Component({
   selector: 'app-recettes',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, FormsModule, MatButtonToggleModule],
+  imports: [CommonModule, FormsModule, MatButtonToggleModule, MatIconModule],
   templateUrl: './recettes.html',
   styleUrls: ['./recettes.scss'],
 })
-export class Recettes implements OnInit {
- // Text entered to filter recipes
-searchText: string = '';
+export class Recettes {
 
-// Filters selected but not yet applied
-pendingFilters = {
-  typePlat: '',
-  typeCuisine: '',
-  modeCuisson: '',
-  region: '',
-  sucreSale: ''
-};
+  searchText = '';
+  showFilters = false;
 
-// Filters currently applied to the recipe list
-appliedFilters = {
-  typePlat: '',
-  typeCuisine: '',
-  modeCuisson: '',
-  region: '',
-  sucreSale: ''
-};
-
-recettes: Recette[] = [];
-
-constructor(
-  private router: Router,
-  private route: ActivatedRoute,
-  private dataService: DataService,
-) {}
-
-ngOnInit(): void {
-  // Load the first 30 recipes from the data service
-  this.recettes = this.dataService.getRecettes().slice(0, 30);
-
-  // Retrieve search text and filter visibility from URL parameters
-  this.route.queryParams.subscribe(params => {
-    this.searchText = params['search'] || '';
-    // Open filters if ?showFilters=true is present in the URL
-    this.showFilters = params['showFilters'] === 'true';
-  });
-}
-
-// Filters are hidden when the page loads
-showFilters = false;
-
-// Toggle the visibility of the filter panel
-toggleFilters() {
-  this.showFilters = !this.showFilters;
-}
-
-// Returns the list of recipes filtered using applied filters + search text
-get filteredRecettes() {
-  const search = this.searchText.toLowerCase().trim();
-
-  return this.recettes.filter(r =>
-    r.title.toLowerCase().includes(search) &&
-    (this.appliedFilters.typePlat === '' || r.dish_type === this.appliedFilters.typePlat) &&
-    (this.appliedFilters.typeCuisine === '' || r.cuisine_type === this.appliedFilters.typeCuisine) &&
-    (this.appliedFilters.modeCuisson === '' || r.cooking_method === this.appliedFilters.modeCuisson) &&
-    (this.appliedFilters.region === '' || r.region === this.appliedFilters.region) &&
-    (this.appliedFilters.sucreSale === '' || r.flavor === this.appliedFilters.sucreSale)
-  );
-}
-
-// Counts how many recipes match the pending (not yet applied) filters
-get countPendingResults() {
-  return this.recettes.filter(r =>
-    (this.pendingFilters.typePlat === '' || r.dish_type === this.pendingFilters.typePlat) &&
-    (this.pendingFilters.typeCuisine === '' || r.cuisine_type === this.pendingFilters.typeCuisine) &&
-    (this.pendingFilters.modeCuisson === '' || r.cooking_method === this.pendingFilters.modeCuisson) &&
-    (this.pendingFilters.region === '' || r.region === this.pendingFilters.region) &&
-    (this.pendingFilters.sucreSale === '' || r.flavor === this.pendingFilters.sucreSale)
-  ).length;
-}
-
-// Apply the pending filters and close the filter panel
-applyFilters() {
-  this.appliedFilters = { ...this.pendingFilters };
-  this.showFilters = false; // close the filters
-}
-
-// Reset all filters and reopen the filter panel
-clearAllFilters() {
-  this.pendingFilters = {
+  pendingFilters = {
     typePlat: '',
     typeCuisine: '',
     modeCuisson: '',
     region: '',
-    sucreSale: ''
+    sucreSale: '',
   };
 
-  this.appliedFilters = {
-    typePlat: '',
-    typeCuisine: '',
-    modeCuisson: '',
-    region: '',
-    sucreSale: ''
-  };
+  private appliedFilters$ = new BehaviorSubject({ ...this.pendingFilters });
+  private pendingFilters$ = new BehaviorSubject({ ...this.pendingFilters });
+  private search$ = new BehaviorSubject('');
 
-  this.showFilters = true; // reopen filters if needed
-}
+  filteredRecettes$;
+  pendingCount$;
 
-// Navigate to the selected recipe details page
-navigateToRecette(id: number): void {
-  this.router.navigate(['/recettes', id]);
-}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {
+    // Écoute les query params en temps réel
+    this.route.queryParams.subscribe(params => {
+      const search = params['search'] || '';
+      this.searchText = search;
+      this.search$.next(search);
+
+      // Ne change showFilters que si le param est explicitement présent
+      if (params.hasOwnProperty('showFilters')) {
+        this.showFilters = params['showFilters'] === 'true';
+      }
+    });
+
+    this.filteredRecettes$ = combineLatest([
+      this.dataService.getRecettes(),
+      this.appliedFilters$,
+      this.search$,
+    ]).pipe(
+      map(([recettes, filters, search]) => {
+        const s = search.toLowerCase().trim();
+        return recettes.filter((r) =>
+          r.title.toLowerCase().includes(s) &&
+          (filters.typePlat === '' || r.dish_type === filters.typePlat) &&
+          (filters.typeCuisine === '' || r.cuisine_type === filters.typeCuisine) &&
+          (filters.modeCuisson === '' || r.cooking_method === filters.modeCuisson) &&
+          (filters.region === '' || r.region === filters.region) &&
+          (filters.sucreSale === '' || r.flavor === filters.sucreSale)
+        );
+      })
+    );
+
+    this.pendingCount$ = combineLatest([
+      this.dataService.getRecettes(),
+      this.pendingFilters$,
+      this.search$,
+    ]).pipe(
+      map(([recettes, filters, search]) => {
+        const s = search.toLowerCase().trim();
+        return recettes.filter((r) =>
+          r.title.toLowerCase().includes(s) &&
+          (filters.typePlat === '' || r.dish_type === filters.typePlat) &&
+          (filters.typeCuisine === '' || r.cuisine_type === filters.typeCuisine) &&
+          (filters.modeCuisson === '' || r.cooking_method === filters.modeCuisson) &&
+          (filters.region === '' || r.region === filters.region) &&
+          (filters.sucreSale === '' || r.flavor === filters.sucreSale)
+        ).length;
+      })
+    );
+  }
+
+  onSearchChange(): void {
+    this.search$.next(this.searchText);
+  }
+
+  onPendingChange(): void {
+    this.pendingFilters$.next({ ...this.pendingFilters });
+  }
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
+  }
+
+  applyFilters(): void {
+    this.appliedFilters$.next({ ...this.pendingFilters });
+    this.showFilters = false;
+    this.router.navigate(['/recettes'], {
+      queryParams: { showFilters: null },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  clearAllFilters(): void {
+    this.pendingFilters = { typePlat: '', typeCuisine: '', modeCuisson: '', region: '', sucreSale: '' };
+    this.appliedFilters$.next({ ...this.pendingFilters });
+    this.pendingFilters$.next({ ...this.pendingFilters });
+    this.showFilters = true;
+  }
+
+  navigateToRecette(id: number): void {
+    this.router.navigate(['/recettes', id]);
+  }
 }
