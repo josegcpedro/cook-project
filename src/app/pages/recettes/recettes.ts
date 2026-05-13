@@ -110,12 +110,16 @@ export class Recettes {
     });
   }
 
-  clearAllFilters(): void {
-    this.pendingFilters = { typePlat: '', typeCuisine: '', modeCuisson: '', region: '', sucreSale: '' };
-    this.appliedFilters$.next({ ...this.pendingFilters });
-    this.pendingFilters$.next({ ...this.pendingFilters });
-    this.showFilters = true;
-  }
+ clearAllFilters(): void {
+  this.pendingFilters = { typePlat: '', typeCuisine: '', modeCuisson: '', region: '', sucreSale: '' };
+  this.appliedFilters$.next({ ...this.pendingFilters });
+  this.pendingFilters$.next({ ...this.pendingFilters });
+  this.showFilters = false;
+  this.router.navigate(['/recettes'], {
+    queryParams: { search: null, showFilters: null },
+    queryParamsHandling: 'merge'
+  });
+}
 
   navigateToRecette(id: number): void {
     this.router.navigate(['/recettes', id]);

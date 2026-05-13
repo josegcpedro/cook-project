@@ -19,7 +19,6 @@ export class Header {
 
   constructor(private router: Router) {
 
-    // will only  show the search bar to route who start with "recettes"
     const updateVisibility = (url: string) => {
       const path = url.split('?')[0];
       this.showSearch = path === '/recettes';
