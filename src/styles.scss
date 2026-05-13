@@ -36,6 +36,10 @@ body {
   max-width: 1024px;
   margin: auto;
   overflow-x: hidden;
+  padding-top: 60px;
+  @media screen and (max-width: 440px) {
+    padding-top: 100px;
+  }
 }
 
 /* You can add global styles to this file, and also import other style files */
