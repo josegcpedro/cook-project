@@ -1,31 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Recettes } from './recettes';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
 describe('Recettes', () => {
-  let component: Recettes;
-  let fixture: ComponentFixture<Recettes>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  it('should create', () => {
+    TestBed.configureTestingModule({
       imports: [Recettes],
       providers: [
         {
           provide: ActivatedRoute,
           useValue: {
-            queryParams: of({})
-          }
-        }
-      ]
+            queryParams: of({}),
+          },
+        },
+      ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Recettes);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
+    const fixture = TestBed.createComponent(Recettes);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

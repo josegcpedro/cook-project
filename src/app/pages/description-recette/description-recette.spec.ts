@@ -1,22 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute } from '@angular/router';
 import { DescriptionRecette } from './description-recette';
 
 describe('DescriptionRecette', () => {
-  let component: DescriptionRecette;
-  let fixture: ComponentFixture<DescriptionRecette>;
 
-  beforeEach(async () => {
+  it('should create', async () => {
     await TestBed.configureTestingModule({
       imports: [DescriptionRecette, RouterTestingModule],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: {
+                get: () => '1',
+              },
+            },
+          },
+        },
+      ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DescriptionRecette);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
+    const fixture = TestBed.createComponent(DescriptionRecette);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });
