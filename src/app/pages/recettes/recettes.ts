@@ -5,8 +5,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
-
+import { PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { DataService } from '../../services/data-service';
+const FILTERS_STORAGE_KEY = 'recettes-filters';
 
 @Component({
   selector: 'app-recettes',
@@ -19,7 +21,6 @@ export class Recettes {
 
   searchText = '';
   showFilters = false;
-
   pendingFilters = {
     typePlat: '',
     typeCuisine: '',
@@ -35,11 +36,36 @@ export class Recettes {
   filteredRecettes$;
   pendingCount$;
 
+private platformId = inject(PLATFORM_ID);
+
+private saveFilters(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+  localStorage.setItem(
+    FILTERS_STORAGE_KEY,
+    JSON.stringify(this.pendingFilters)
+  );
+}
+
+private loadFilters(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+  const saved = localStorage.getItem(FILTERS_STORAGE_KEY);
+
+  if (!saved) return;
+
+  this.pendingFilters = JSON.parse(saved);
+
+  this.appliedFilters$.next({ ...this.pendingFilters });
+  this.pendingFilters$.next({ ...this.pendingFilters });
+}
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService
   ) {
+      this.loadFilters();
+
     // Écoute les query params en temps réel
     this.route.queryParams.subscribe(params => {
       const search = params['search'] || '';
@@ -95,6 +121,8 @@ export class Recettes {
 
   onPendingChange(): void {
     this.pendingFilters$.next({ ...this.pendingFilters });
+      this.saveFilters();
+
   }
 
   toggleFilters(): void {
@@ -103,6 +131,32 @@ export class Recettes {
 
   applyFilters(): void {
     this.appliedFilters$.next({ ...this.pendingFilters });
+    this.saveFilters();
+    this.showFilters = false;
+    this.router.navigate(['/recettes'], {
+      queryParams: { showFilters: null },
+      queryParamsHandling: 'merge'
+    });
+  }
+  clearAllFilters(): void {
+    this.pendingFilters = { typePlat: '', typeCuisine: '', modeCuisson: '', region: '', sucreSale: '' };
+   this.appliedFilters$.next({ ...this.pendingFilters });
+    this.pendingFilters$.next({ ...this.pendingFilters });
+    this.showFilters = false;
+    this.router.navigate(['/recettes'], {
+      queryParams: { search: null, showFilters: null },
+      queryParamsHandling: 'merge'
+    });
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(FILTERS_STORAGE_KEY);
+    }
+  }
+
+  navigateToRecette(id: number): void {
+    this.router.navigate(['/recettes', id]);
+  }
+
+  closeFilter(): void {
     this.showFilters = false;
     this.router.navigate(['/recettes'], {
       queryParams: { showFilters: null },
@@ -110,18 +164,15 @@ export class Recettes {
     });
   }
 
-  clearAllFilters(): void {
-    this.pendingFilters = { typePlat: '', typeCuisine: '', modeCuisson: '', region: '', sucreSale: '' };
-    this.appliedFilters$.next({ ...this.pendingFilters });
-    this.pendingFilters$.next({ ...this.pendingFilters });
-    this.showFilters = false;
-    this.router.navigate(['/recettes'], {
-      queryParams: { search: null, showFilters: null },
-      queryParamsHandling: 'merge'
-    });
-  }
+  resetFilters(): void {
+  this.pendingFilters = {
+    typePlat: '',
+    typeCuisine: '',
+    modeCuisson: '',
+    region: '',
+    sucreSale: '',
+  };
 
-  navigateToRecette(id: number): void {
-    this.router.navigate(['/recettes', id]);
-  }
+  this.pendingFilters$.next({ ...this.pendingFilters });
+}
 }

@@ -6,7 +6,13 @@
     <!--Filters (visible only when showFilters = true) -->
     <div class="filters-container" *ngIf="showFilters">
 
+      <div  class="filters-header">
+
       <h5 class="filters-title">Filtrer</h5>
+        <button  mat-icon-button (click)="closeFilter()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
 
       <div class="filtre-group">
         <div class="filtre-label">Type de plat</div>
@@ -64,10 +70,15 @@
         </mat-button-toggle-group>
       </div>
 
-      <button class="btn-resultats" (click)="applyFilters()">
-        <mat-icon>search</mat-icon>
-        Montrer les {{ pendingCount$ | async }} résultats
-      </button>
+     <div class="filters-actions">
+        <button class="btn-resultats" (click)="applyFilters()">
+          <mat-icon>search</mat-icon>
+          Montrer les {{ pendingCount$ | async }} résultats
+        </button>
+        <button  class="btn-resultats" mat-icon-button (click)="resetFilters()">
+          <mat-icon>autorenew</mat-icon> Réinitaliser
+        </button>
+     </div>
 
     </div>
 
@@ -86,7 +97,7 @@
 
     <!--Back button-->
     <button class="btn-retour-small" (click)="clearAllFilters()">
-      Retour
+      Voir toutes les recettes
     </button>
 
   </div>
