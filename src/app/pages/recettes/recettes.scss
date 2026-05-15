@@ -43,6 +43,26 @@
     width: 100%;
   }
 }
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.filters-container button {
+  background: transparent;
+  border: none;
+  color: var(--mat-sys-on-surface);
+  cursor: pointer;
+}
+.filters-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
 
 .recipes-card {
   position: relative;
