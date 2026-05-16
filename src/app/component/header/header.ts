@@ -18,8 +18,7 @@ export class Header {
   search = new FormControl('');
 
   constructor(private router: Router) {
-
-    // will only  show the search bar to route who start with "recettes"
+    // Will only show the search bar to routes that start with "recettes"
     const updateVisibility = (url: string) => {
       const path = url.split('?')[0];
       this.showSearch = path === '/recettes';
@@ -32,29 +31,27 @@ export class Header {
       .subscribe((event: any) => {
         updateVisibility(event.urlAfterRedirects);
       });
-      // Envoie la recherche dans l’URL
-    this.search.valueChanges.subscribe(value => {
-     this.router.navigate([], {
-      queryParams: { search: value },
-      queryParamsHandling: 'merge'
+    // Sends the search input to the URL
+    this.search.valueChanges.subscribe((value) => {
+      this.router.navigate([], {
+        queryParams: { search: value },
+        queryParamsHandling: 'merge',
+      });
     });
-  });
   }
-  // ouvre/ferme les filtres dans la page recettes
-openMenu() {
-  const current = this.router.url.includes('showFilters=true');
-  const newValue = current ? 'false' : 'true';
+  // Opens/closes filters on the recipes page
+  openMenu() {
+    const current = this.router.url.includes('showFilters=true');
+    const newValue = current ? 'false' : 'true';
 
-  this.router.navigate(['/recettes'], {
-    queryParams: { showFilters: newValue },
-    queryParamsHandling: 'merge'
-  });
+    this.router.navigate(['/recettes'], {
+      queryParams: { showFilters: newValue },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  // Returns to the home page
+  navigateToHome(): void {
+    this.router.navigate(['/home']);
+  }
 }
-
-
-// Retourne à la page d'accueil
-navigateToHome(): void {
-  this.router.navigate(['/home']);
-}
-}
-
