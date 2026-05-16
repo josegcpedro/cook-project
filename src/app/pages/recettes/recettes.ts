@@ -30,13 +30,13 @@ export class Recettes {
     this.filteredRecettes$ = this.filterService.filteredRecettes$;
     this.pendingCount$ = this.filterService.pendingCount$;
 
-    // Écoute les query params en temps réel
+    // Listens to query params in real time
     this.route.queryParams.subscribe((params) => {
       const search = params['search'] || '';
       this.searchText = search;
       this.filterService.setSearch(search);
 
-      // Ne change showFilters que si le param est explicitement présent
+      // Only changes showFilters if the param is explicitly present
       if (params.hasOwnProperty('showFilters')) {
         this.showFilters = params['showFilters'] === 'true';
       }
